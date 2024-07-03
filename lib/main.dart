@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,170 +36,275 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Ovie J',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    '\$85,429',
-                    style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Column(
+                  Row(
                     children: [
-                      IconButton(
-                        icon: const Icon(Icons.notifications),
-                        onPressed: () {},
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Colors.grey[200],
+                        child: const Icon(Icons.person, color: Colors.grey),
                       ),
+                      const SizedBox(width: 8),
                       const Text(
-                        'USD',
+                        'Ovie J',
                         style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      const Icon(Icons.arrow_forward_ios, size: 16),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.qr_code_scanner),
+                      const SizedBox(width: 16), // Space between barcode and notification
+                      Stack(
+                        children: [
+                          const Icon(Icons.notifications),
+                          Positioned(
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(255, 99, 68, 255),
+                                shape: BoxShape.circle,
+                              ),
+                              constraints: const BoxConstraints(
+                                minWidth: 16,
+                                minHeight: 16,
+                              ),
+                              child: const Text(
+                                '5',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Text('Add Money', style: TextStyle(color: Colors.white),),
-                  ),
-                  const SizedBox(width: 8),
-                  OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Text('Send Money', style: TextStyle(color: Colors.black),),
-                  ),
-                  const SizedBox(width: 8),
-                  IconButton(
-                    icon: const Icon(Icons.more_horiz),
-                    onPressed: () {},
-                  ),
-                ],
+              const SizedBox(height: 24),
+              const Text(
+                '\$85,429',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
+              const Text(
+                'Total Balance in base currency of USD',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 24),
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 99, 68, 255),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24), // More rounded corners
+                        ),
                       ),
-                      child: const Column(
-                        children: [
-                          Icon(Icons.swap_horiz, size: 32),
-                          SizedBox(height: 8),
-                          Text('Recent Transfers'),
-                        ],
-                      ),
+                      child: const Text('Add Money',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                     ),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24), // More rounded corners
+                        ),
                       ),
-                      child: const Column(
-                        children: [
-                          Icon(Icons.monetization_on, size: 32),
-                          SizedBox(height: 8),
-                          Text('Crypto Purchase'),
-                        ],
-                      ),
+                      child: const Text('Send Money',style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Column(
-                        children: [
-                          Icon(Icons.receipt, size: 32),
-                          SizedBox(height: 8),
-                          Text('Generate Invoice'),
-                        ],
-                      ),
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.more_horiz),
+                      onPressed: () {},
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Quick Actions',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 99, 68, 255)
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 150,
+                child: PageView(
+                  controller: _pageController,
+                  children: const [
+                    QuickActionPage(
+                      quickActions: [
+                        QuickActionItem(
+                          icon: Icons.swap_horiz,
+                          title: 'Recent Transfers',
+                          subtitle: 'Effortless payments to those you send to often.',
+                          imageUrls: ['url1', 'url2', 'url3'],
+                        ),
+                        QuickActionItem(
+                          icon: Icons.monetization_on,
+                          title: 'Crypto Purchase',
+                          subtitle: 'Securely buy your favorite cryptocurrencies.',
+                          imageUrls: [],
+                        ),
+                      ],
+                    ),
+                    QuickActionPage(
+                      quickActions: [
+                        QuickActionItem(
+                          icon: Icons.receipt,
+                          title: 'Generate Invoice',
+                          subtitle: 'Create and manage your invoices.',
+                          imageUrls: [],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              Center(
+                child: SmoothPageIndicator(
+                  controller: _pageController,
+                  count: 2,
+                  effect: const WormEffect(
+                    dotHeight: 8,
+                    dotWidth: 8,
+                    activeDotColor: Color.fromARGB(255, 99, 68, 255),
+                    dotColor: Colors.grey,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.grey[300]!), // Grey outline
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('All Operations'),
+                    const Text(
+                      'All Operations',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Spendings in June, 2024',
+                      style: TextStyle(color: Colors.grey),
+                    ),
                     const SizedBox(height: 8),
                     LinearProgressIndicator(
                       value: 0.6,
                       backgroundColor: Colors.grey[300],
-                      valueColor: const AlwaysStoppedAnimation<Color>(Colors.purple),
+                      valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 99, 68, 255)),
                     ),
                     const SizedBox(height: 8),
-                    const Text('\$8,562.89'),
+                    const Text(
+                      '\$8,562.89',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ],
                 ),
               ),
+              const SizedBox(height: 24),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recent Transactions',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'See all',
+                    style: TextStyle(color:Color.fromARGB(255, 99, 68, 255)),
+                  ),
+                ],
+              ),
               const SizedBox(height: 16),
-              const Text('Recent Transactions'),
-              const SizedBox(height: 8),
               Expanded(
                 child: ListView(
                   children: const [
                     ListTile(
-                      leading: CircleAvatar(child: Text('EO')),
-                      title: Text('Etoma-etoto Odi'),
-                      subtitle: Text('August 3, 2024, Payment'),
-                      trailing: Text(
-                        '-\$5,000',
-                        style: TextStyle(color: Colors.red),
+                      leading: CircleAvatar(child: Text('MB')),
+                      title: Text('Micheal B.'),
+                      subtitle: Text('August 3, 2024. Payment'),
+                      trailing: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '-\$5,000',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          Text(
+                            'Pending',
+                            style: TextStyle(color: Colors.orange),
+                          ),
+                        ],
                       ),
                     ),
                     ListTile(
                       leading: CircleAvatar(child: Text('G')),
                       title: Text('Google Inc'),
-                      subtitle: Text('July 12, 2024, Deposit'),
-                      trailing: Text(
-                        '+\$20,000',
-                        style: TextStyle(color: Colors.green),
+                      subtitle: Text('July 12, 2024. Deposit'),
+                      trailing: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '+\$20,000',
+                            style: TextStyle(color: Colors.green),
+                          ),
+                          Text(
+                            'Received',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -220,7 +333,85 @@ class HomeScreen extends StatelessWidget {
             label: 'Hub',
           ),
         ],
-        selectedItemColor: Colors.purple,
+        selectedItemColor: const Color.fromARGB(158, 46, 56, 163),
+      ),
+    );
+  }
+}
+
+class QuickActionPage extends StatelessWidget {
+  final List<QuickActionItem> quickActions;
+
+  const QuickActionPage({super.key, required this.quickActions});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: quickActions,
+    );
+  }
+}
+
+class QuickActionItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final List<String> imageUrls;
+
+  const QuickActionItem({super.key, 
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.imageUrls,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 160, // Adjusted width to better match the provided image
+      margin: const EdgeInsets.only(right: 8),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey[300]!), // Grey outline
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              for (var url in imageUrls)
+                const Padding(
+                  padding: EdgeInsets.only(right: 4),
+                  child: CircleAvatar(
+                    radius: 10,
+                    backgroundColor: Colors.grey,
+                    // backgroundImage: NetworkImage(url), // Use actual images in a real app
+                    child: Icon(Icons.person, size: 10),
+                  ),
+                ),
+              const Spacer(),
+              const Icon(Icons.arrow_forward_ios, size: 16),
+            ],
+          ),
+          const Spacer(),
+          Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            subtitle,
+            style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 12,
+            ),
+          ),
+        ],
       ),
     );
   }
