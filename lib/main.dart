@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text('Add Money', style: TextStyle(color: Colors.white),),
+                    child: const Text('Add Money', style: TextStyle(color: Colors.blueGrey),),
                   ),
                   const SizedBox(width: 8),
                   OutlinedButton(
