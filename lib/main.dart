@@ -177,8 +177,8 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   children: const [
                     ListTile(
-                      leading: CircleAvatar(child: Text('MB')),
-                      title: Text('Micheal B.'),
+                      leading: CircleAvatar(child: Text('EO')),
+                      title: Text('Etoma-etoto Odi'),
                       subtitle: Text('August 3, 2024, Payment'),
                       trailing: Text(
                         '-\$5,000',
