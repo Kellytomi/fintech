@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(24), // More rounded corners
                         ),
                       ),
-                      child: const Text('Add Money',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                      child: const Text('Add Money', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(24), // More rounded corners
                         ),
                       ),
-                      child: const Text('Send Money',style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                      child: const Text('Send Money', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -151,22 +151,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               const SizedBox(height: 24),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Quick Actions',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    'See all',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 99, 68, 255)
-                    ),
-                  ),
-                ],
+              const Text(
+                'Quick Actions',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               SizedBox(
@@ -263,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Text(
                     'See all',
-                    style: TextStyle(color:Color.fromARGB(255, 99, 68, 255)),
+                    style: TextStyle(color: Color.fromARGB(255, 99, 68, 255)),
                   ),
                 ],
               ),
@@ -280,11 +269,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             '-\$5,000',
-                            style: TextStyle(color: Colors.red),
+                            style: TextStyle(color: Colors.red, fontSize: 16),
                           ),
                           Text(
                             'Pending',
-                            style: TextStyle(color: Colors.orange),
+                            style: TextStyle(color: Colors.orange, fontSize: 12),
                           ),
                         ],
                       ),
@@ -298,11 +287,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             '+\$20,000',
-                            style: TextStyle(color: Colors.green),
+                            style: TextStyle(color: Colors.green, fontSize: 16),
                           ),
                           Text(
                             'Received',
-                            style: TextStyle(color: Colors.grey),
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
                           ),
                         ],
                       ),
@@ -347,7 +336,7 @@ class QuickActionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: quickActions,
     );
   }
